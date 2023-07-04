@@ -1,0 +1,60 @@
+RewriteEngine On
+# Redirect index to main folder
+RewriteCond %{HTTP_HOST} ^beaglecargo.com$
+Redirect /index.php /views/default/
+
+# Redirect http to https
+#RewriteCond %{SERVER_PORT} 80
+#RewriteCond %{HTTP_HOST} ^(www\.)?beaglecargo\.com
+#RewriteRule ^(.*)$ https://www.beaglecargo.com/$1 [R,L]
+
+# Redirect to HTTPs.
+RewriteCond %{SERVER_PORT} =80
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# For injection prevention
+RewriteCond %{HTTP:Acunetix-Product} ^WVS
+RewriteRule ^.* http://127.0.0.1/ [R=301,L]
+RewriteCond %{QUERY_STRING} [^a-z](declare|char|set|cast|convert|delete|drop|exec|insert|meta|script|select|truncate|update)[^a-z] [NC]
+RewriteRule (.*) - [F]
+
+#?contents=shopping_details&newsID=41
+
+# orig http://url.com/Forum/Topic?id=1
+# Remove .php file extension on requests
+#RewriteRule ^(.+)\.php$ /$1 [R,L]
+
+# Specific rewrite for /Forum/Topic/N
+#RewriteRule ^(views/default)/(\d+)/(\d+)$ $1.php?contents=$2&page=$3 [END]
+
+# Append .php extension for other requests
+#RewriteCond %{DOCUMENT_ROOT}/$1.php -f
+#RewriteRule ^(.*?)/?$ /$1.php [END]
+
+
+#RewriteRule ^url/(.*)/(.*)$ index.php?url=$1&id=$2
+
+
+
+<Files configuration.ini>
+Deny from all
+</Files>
+<Files composer.json>
+Deny from all
+</Files>
+<Files .htaccess>
+Deny from all
+</Files>
+<Files ~ .^w+.(gif|jpe?g|png)$.>
+Order deny,allow
+Allow from all
+</Files>
+<FilesMatch \.(?i:csv)$>
+Order Allow,Deny
+Deny from all
+</FilesMatch>
+Options -Indexes
+
+# BEGIN WordPress
+
+# END WordPress

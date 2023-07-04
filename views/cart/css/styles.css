@@ -1,0 +1,18 @@
+.gradient-custom {
+  background: #cccccc;
+}
+
+.smalltextbox {
+  width:50px;
+  height: 30px; 
+  padding: 1px;
+  border:0px;
+  text-align:right;
+  color: #FF0000;
+  font-weight:bold; 
+}
+
+.left {
+  text-align: left;
+  font-weight:bold;  
+}

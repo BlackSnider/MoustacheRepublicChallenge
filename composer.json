@@ -1,0 +1,41 @@
+{
+    "name": "moustache/shoppingcartchallenge",
+    "description": "Simple Product Details - Shopping Cart",
+    "type": "challenge",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Edmar Cruz",
+            "email": "edmar.cruz1208@gmail.com"
+        }
+    ],
+    
+    "autoload" : {
+        "classmap": [
+            "system"
+        ]
+    },
+	"require-dev": {
+		"phpunit/phpunit": "^9",
+		"phpunit/dbunit": "^4.0"
+    },
+    "archive": {
+        "exclude": [
+            "!system",
+	        "!views",
+            "composer.json",
+            ".git", 
+            "*.bat", 
+            "*.sh", 
+            ".buildpath", 
+            ".gitignore", 
+            ".project", 
+            ".settings", 
+            ".svn",
+            "composer.lock",
+            "/vendor",
+            "configuration.ini.*",
+            "test"
+        ]
+    }
+}

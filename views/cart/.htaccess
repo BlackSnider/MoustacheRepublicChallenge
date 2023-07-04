@@ -1,0 +1,28 @@
+<IfModule mod_rewrite.c>
+# Start to Rewrite
+RewriteEngine On
+
+DirectoryIndex index.php
+ErrorDocument 404  404/
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !.(css|gif|ico|jpg|js|png|swf|txt)$
+RewriteRule ^(.*)/(.*)$ index.php?contents=$1&paramsID=$2
+
+</IfModule>
+
+<Files config.ini>
+Deny from all
+</Files>
+
+<Files .htaccess>
+Deny from all
+</Files>
+
+<FilesMatch "\.(ttf|ttc|otf|eot|woff)$">
+    <IfModule mod_headers.c>
+        Header set Access-Control-Allow-Origin "*"
+    </IfModule>
+</FilesMatch> 
+
+Options -Indexes

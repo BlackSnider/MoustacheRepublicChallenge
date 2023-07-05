@@ -47,7 +47,7 @@ prefix=<MYSQL DATABASE TABLE PREFIX>
 To run this application, used this link on your browser 
 
 ```
-<YOUR WEBROOT URL>/views/cart/contents=home
+<YOUR WEBROOT URL>/views/cart/index.php?contents=home
 ```
 
 # REST API for creating, updating and viewing cart Details
